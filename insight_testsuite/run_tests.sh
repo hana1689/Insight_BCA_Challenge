@@ -98,3 +98,4 @@ function run_all_tests {
 
 check_project_struct
 run_all_tests
+run_all_tests
