@@ -1,6 +1,6 @@
 
 
-javac -Xlint:unchecked ./src/*.java
+javac -Xlint -nowarn ./src/*.java
 
 export CLASSPATH=${CLASSPATH}:.
 
