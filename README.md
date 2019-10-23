@@ -45,8 +45,11 @@ Open the `run.sh` file if you want to configure the input and output file. The f
 
 Last two arguments should be the directory of input and output file, respectively. You can create a test folder in testsuite and specify the directory here to run the test you want. For example: `"./insight_testsuite/tests/test_1/output/report.csv"`
 
-# Limitations
-This program only accepts the clean data. It does validate if the file is in the correct format like it must place `Border`, `Date`, `Value`, and `Measure` in the correct order and if the file has no data. However, it does not check if data contains some special characters or not such as \\, \, @, $, etc
+# Validation Scope
+- Validate if the file is in the correct format like it must place `Border`, `Date`, `Value`, and `Measure` in the correct order
+- Validate if the file has no data after the header
+- Validate if Date is in the correct date format
+- Validate if Value is a number
 
 
 
