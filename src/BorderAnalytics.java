@@ -2,6 +2,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 /**
  * Given the file is exactly the same as the sample data
@@ -30,14 +32,12 @@ public class BorderAnalytics {
         writeData(calValueAndAvg(readData()));
     }
 
-
     /**
      * This function checks the valid file and then reads each row from the .csv file and then each row will be created as an
      * object and saved in the list
      *
      * @return list of data
      */
-
     public static List<DataEntry> readData() {
 //      Create the list to store data from the file as we have many rows
         List<DataEntry> list = new ArrayList<DataEntry>();
@@ -64,9 +64,9 @@ public class BorderAnalytics {
                         // will continue to the end of the file
                         DataEntry data_entry = new DataEntry();
                         data_entry.setBorder(data[3]);
-                        data_entry.setDate(data[4]);
+                        data_entry.setDate(checkDate(data[4]));
                         data_entry.setMeasure(data[5]);
-                        data_entry.setValue(Integer.parseInt(data[6]));
+                        data_entry.setValue(checkValue(data[6]));
 //                      Once each row is added into DataEntry, it will be added into the list as an object
                         list.add(data_entry);
                     }
@@ -89,14 +89,44 @@ public class BorderAnalytics {
     }
 
     /**
+     * This function receives Date from the input file check if Date is in the correct date format
+     * @param date
+     * @return
+     */
+    public static String checkDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss a");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+        } catch (ParseException pe) {
+            System.out.println("Date is not in the date format");
+        }
+        return date;
+    }
+
+    /**
+     * This function receives Value from the input file and check if Value is a number
+     * @param check
+     * @return
+     */
+    public static int checkValue(String check) {
+        int value = 0;
+        try {
+            value = Integer.parseInt(check);
+        } catch(NumberFormatException e) {
+            System.out.println("Value is not in the number format");
+        }
+        return value;
+    }
+
+    /**
      * This function is the most important one as it calculates the value and average. It receives the data_entry_list result
      * from the readData() and then goes through each object to retrieve data needed to the calculation. First, it calculates
      * the Value of each object in the list. Then, it starts calculating the average based on this result
      *
      * @param data_entry_list
      */
-
-    public static List<DataExport> calValueAndAvg(List<DataEntry> data_entry_list) {
+    public static List calValueAndAvg(List<DataEntry> data_entry_list) {
 //      In order to calculate the value, three important keys are border, date, and measure. Therefore, the HashMap is created to store
 //      this set of keys. The list of DataExport objects is also needed to store and export data
         HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -160,7 +190,6 @@ public class BorderAnalytics {
      *
      * @param data_export_list
      */
-
     public static void writeData(List<DataExport> data_export_list) {
         FileWriter csvWriter = null;
         try {
@@ -194,7 +223,4 @@ public class BorderAnalytics {
             }
         }
     }
-
 }
-
-
