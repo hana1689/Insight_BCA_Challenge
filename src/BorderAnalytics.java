@@ -21,7 +21,7 @@ public class BorderAnalytics {
     private static Scanner scan;
 
     /**
-     * The main function is where the file will execute first. It calls other functions in the file
+     * The main function is where the file will execute first. It calls other functions in the file to execute here
      */
     public static void main(String[] args) {
 //        Read the argument from the execution file, in which the first and second args are the directory of input and output file, respectively
@@ -32,12 +32,14 @@ public class BorderAnalytics {
         writeData(calValueAndAvg(readData()));
     }
 
+
     /**
      * This function checks the valid file and then reads each row from the .csv file and then each row will be created as an
      * object and saved in the list
      *
      * @return list of data
      */
+
     public static List<DataEntry> readData() {
 //      Create the list to store data from the file as we have many rows
         List<DataEntry> list = new ArrayList<DataEntry>();
@@ -93,6 +95,7 @@ public class BorderAnalytics {
      * @param date
      * @return
      */
+
     public static String checkDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss a");
         dateFormat.setLenient(false);
@@ -109,6 +112,7 @@ public class BorderAnalytics {
      * @param check
      * @return
      */
+
     public static int checkValue(String check) {
         int value = 0;
         try {
@@ -126,6 +130,7 @@ public class BorderAnalytics {
      *
      * @param data_entry_list
      */
+
     public static List calValueAndAvg(List<DataEntry> data_entry_list) {
 //      In order to calculate the value, three important keys are border, date, and measure. Therefore, the HashMap is created to store
 //      this set of keys. The list of DataExport objects is also needed to store and export data
@@ -190,6 +195,7 @@ public class BorderAnalytics {
      *
      * @param data_export_list
      */
+
     public static void writeData(List<DataExport> data_export_list) {
         FileWriter csvWriter = null;
         try {
@@ -223,4 +229,7 @@ public class BorderAnalytics {
             }
         }
     }
+
 }
+
+
