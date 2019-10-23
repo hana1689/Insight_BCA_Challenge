@@ -1,3 +1,7 @@
+/**
+ * This class is used to create an object to store the data read from the input file. This simply includes getter, setter, and toString() methods
+ */
+
 public class DataEntry {
 
     private String border;
