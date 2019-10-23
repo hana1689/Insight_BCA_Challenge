@@ -96,7 +96,7 @@ public class BorderAnalytics {
      * @param data_entry_list
      */
 
-    public static List calValueAndAvg(List<DataEntry> data_entry_list) {
+    public static List<DataExport> calValueAndAvg(List<DataEntry> data_entry_list) {
 //      In order to calculate the value, three important keys are border, date, and measure. Therefore, the HashMap is created to store
 //      this set of keys. The list of DataExport objects is also needed to store and export data
         HashMap<String, Integer> map = new HashMap<String, Integer>();
