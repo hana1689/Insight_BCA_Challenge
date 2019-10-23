@@ -93,9 +93,8 @@ public class BorderAnalytics {
     /**
      * This function receives Date from the input file check if Date is in the correct date format
      * @param date
-     * @return
+     * @return date
      */
-
     public static String checkDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss a");
         dateFormat.setLenient(false);
@@ -110,9 +109,8 @@ public class BorderAnalytics {
     /**
      * This function receives Value from the input file and check if Value is a number
      * @param check
-     * @return
+     * @return value
      */
-
     public static int checkValue(String check) {
         int value = 0;
         try {
@@ -131,7 +129,7 @@ public class BorderAnalytics {
      * @param data_entry_list
      */
 
-    public static List calValueAndAvg(List<DataEntry> data_entry_list) {
+    public static List<DataExport> calValueAndAvg(List<DataEntry> data_entry_list) {
 //      In order to calculate the value, three important keys are border, date, and measure. Therefore, the HashMap is created to store
 //      this set of keys. The list of DataExport objects is also needed to store and export data
         HashMap<String, Integer> map = new HashMap<String, Integer>();
